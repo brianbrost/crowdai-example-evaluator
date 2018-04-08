@@ -22,8 +22,8 @@ class ExampleEvaluator:
     then you can simply do :
       `raise Exception("YOUR-CUSTOM-ERROR")`
 
-     You are encourage to add as many validations as possible
-     to provide meaningul feedback to your users
+     You are encouraged to add as many validations as possible
+     to provide meaningful feedback to your users
     """
     _result_object = {
         "score": np.random.random(),
