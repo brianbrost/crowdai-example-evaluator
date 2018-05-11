@@ -2,13 +2,20 @@ import pandas as pd
 import numpy as np
 
 class ExampleEvaluator:
-  def __init__(self, answer_file_path):
+  def __init__(self, answer_file_path, round=0):
+    """
+    `round` : Holds the round for which the evaluation is being done. 
+    can be 0, 1, 2...upto the number of rounds the challenge has.
+    Different rounds will mostly have different ground truth files.
+    """
     self.answer_file_path = answer_file_path
 
-  def _evaluate(self, client_payload, _context={}):
+  def _evaluate(self, client_payload, round=0, _context={}):
     """
     `client_payload` will be a dict with (atleast) the following keys :
       - submission_file_path : local file path of the submitted file
+    `round` : Holds the round for which the evaluation is being done. 
+    can be 0, 1, 2...upto the number of rounds the challenge has.
     """
     submission_file_path = client_payload["submission_file_path"]
     submission = pd.read_csv(submission_file_path)
