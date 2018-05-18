@@ -9,13 +9,12 @@ class ExampleEvaluator:
     Different rounds will mostly have different ground truth files.
     """
     self.answer_file_path = answer_file_path
+    self.round = round
 
-  def _evaluate(self, client_payload, round=0, _context={}):
+  def _evaluate(self, client_payload, _context={}):
     """
     `client_payload` will be a dict with (atleast) the following keys :
       - submission_file_path : local file path of the submitted file
-    `round` : Holds the round for which the evaluation is being done. 
-    can be 0, 1, 2...upto the number of rounds the challenge has.
     """
     submission_file_path = client_payload["submission_file_path"]
     submission = pd.read_csv(submission_file_path)
