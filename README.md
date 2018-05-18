@@ -65,13 +65,12 @@ class ExampleEvaluator:
     Different rounds will mostly have different ground truth files.
     """
     self.answer_file_path = answer_file_path
+    self.round = round
 
-  def _evaluate(self, client_payload, round=0, _context={}):
+  def _evaluate(self, client_payload, _context={}):
     """
     `client_payload` will be a dict with (atleast) the following keys :
       - submission_file_path : local file path of the submitted file
-    `round` : Holds the round for which the evaluation is being done. 
-    can be 0, 1, 2...upto the number of rounds the challenge has.
     """
     submission_file_path = client_payload["submission_file_path"]
     submission = pd.read_csv(submission_file_path)
@@ -80,11 +79,9 @@ class ExampleEvaluator:
     """
     Do something with your submitted file to come up
     with a score and a secondary score.
-
     if you want to report back an error to the user,
     then you can simply do :
       `raise Exception("YOUR-CUSTOM-ERROR")`
-
      You are encouraged to add as many validations as possible
      to provide meaningful feedback to your users
     """
@@ -104,7 +101,7 @@ if __name__ == "__main__":
     # Instaiate a dummy context
     _context = {}
     # Instantiate an evaluator
-    crowdai_evaluator = ExampleEvaluator(answer_file_path)
+    crowdai_evaluator = ExampleEvaluator(answer_file_path, round=1)
     # Evaluate
     result = crowdai_evaluator._evaluate(_client_payload, _context)
     print(result)
