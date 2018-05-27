@@ -58,10 +58,10 @@ import pandas as pd
 import numpy as np
 
 class ExampleEvaluator:
-  def __init__(self, answer_file_path, round=0):
+  def __init__(self, answer_file_path, round=1):
     """
     `round` : Holds the round for which the evaluation is being done. 
-    can be 0, 1, 2...upto the number of rounds the challenge has.
+    can be 1, 2...upto the number of rounds the challenge has.
     Different rounds will mostly have different ground truth files.
     """
     self.answer_file_path = answer_file_path
